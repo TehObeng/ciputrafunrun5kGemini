@@ -27,6 +27,8 @@ describe('App branding and race-pack modal', () => {
     expect(within(heroSection!).queryByText('CiptaLandMegahBatam')).not.toBeInTheDocument();
     expect(within(heroSection!).queryByText('Organized By Phoenix Event Batam')).not.toBeInTheDocument();
     expect(within(heroSection!).queryByText('Ciputra Batam')).not.toBeInTheDocument();
+    expect(screen.queryByText('Lebih Dari Sekadar Lari')).not.toBeInTheDocument();
+    expect(screen.queryByText('Festival Pasca-Lari')).not.toBeInTheDocument();
     expect(jerseyImage).toBeInTheDocument();
     expect(medalImage).toBeInTheDocument();
     expect(screen.getByAltText('Nomor dada BIB Ciputra Batam Fun Run 2026')).toBeInTheDocument();

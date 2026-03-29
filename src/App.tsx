@@ -9,9 +9,6 @@ import {
   Shirt, 
   Ticket,
   ChevronRight,
-  Camera,
-  Music,
-  Smile,
   X
 } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -225,16 +222,6 @@ export default function App() {
                     className="h-8 w-auto object-contain sm:h-10 md:h-12"
                   />
                 </span>
-                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-100 sm:text-base">
-                  Organized By :
-                </span>
-                <span className="inline-flex flex-wrap items-center justify-center">
-                  <img
-                    src={phoenixEventBatamLogo}
-                    alt="Logo Phoenix Event Batam"
-                    className="h-8 w-auto object-contain sm:h-10 md:h-12"
-                  />
-                </span>
               </span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
                 Fun Run 2026
@@ -259,6 +246,19 @@ export default function App() {
               >
                 Pelajari Lebih Lanjut
               </a>
+            </div>
+
+            <div className="mt-10 flex justify-center md:justify-end">
+              <div className="inline-flex flex-col items-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-white backdrop-blur-sm md:items-end">
+                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-100 sm:text-sm">
+                  Organized By :
+                </span>
+                <img
+                  src={phoenixEventBatamLogo}
+                  alt="Logo Phoenix Event Batam"
+                  className="h-8 w-auto object-contain sm:h-10 md:h-12"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -297,48 +297,6 @@ export default function App() {
               <h3 className="text-sm font-medium text-slate-500 uppercase tracking-wider">Jarak</h3>
               <p className="mt-1 text-lg font-bold text-slate-900">5 Kilometers</p>
               <p className="text-sm text-slate-500">Fun Run & Walk</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Lebih Dari Sekadar Lari</h2>
-            <p className="text-lg text-slate-600">
-              Bergabunglah dengan 500+ peserta lainnya dalam acara lari paling seru tahun ini. Dirancang untuk semua level, dari pelari profesional hingga keluarga yang ingin berjalan santai.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <Camera className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Rute Instagramable</h3>
-              <p className="text-slate-600">
-                Setiap kilometer menghadirkan spot foto menarik yang mendorong Anda untuk mengabadikan momen seru bersama teman dan keluarga.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
-                <Smile className="w-7 h-7 text-orange-500" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Untuk Semua Level</h3>
-              <p className="text-slate-600">
-                Tanpa batasan! Berbeda dari lomba kompetitif, fun run ini mengajak pejalan kaki, jogger, maupun pelari untuk berpartisipasi bersama.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <Music className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Festival Pasca-Lari</h3>
-              <p className="text-slate-600">
-                Nikmati hiburan DJ Live, beragam stan makanan, dan puncaknya: pengundian doorprize dengan hadiah menarik yang siap dibawa pulang!
-              </p>
             </div>
           </div>
         </div>
