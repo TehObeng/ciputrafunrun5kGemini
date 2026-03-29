@@ -9,15 +9,17 @@ describe('App branding and race-pack modal', () => {
 
     const nav = screen.getByRole('navigation');
     const navCta = within(nav).getByRole('link', {name: 'Daftar Sekarang'});
+    const medalImage = screen.getByAltText('Medali dan lanyard Ciputra Batam Fun Run 2026');
 
     expect(screen.getByText('Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getAllByAltText('Logo Ciputra Batam Fun Run 2026')).toHaveLength(2);
     expect(screen.getByAltText('Logo CitraLand Megah')).toBeInTheDocument();
     expect(screen.getByAltText('Jersey eksklusif Ciputra Batam Fun Run 2026')).toBeInTheDocument();
-    expect(screen.getByAltText('Medali dan lanyard Ciputra Batam Fun Run 2026')).toBeInTheDocument();
+    expect(medalImage).toBeInTheDocument();
     expect(screen.getByAltText('Nomor dada BIB Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getByAltText('Tas running Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(navCta).toHaveClass('shrink-0', 'px-3', 'py-2', 'text-xs', 'sm:px-5', 'sm:py-2.5', 'sm:text-sm');
+    expect(medalImage).toHaveClass('object-top');
   });
 
   it('opens and closes the race-pack image modal', () => {

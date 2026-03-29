@@ -31,6 +31,7 @@ type RacePackImage = {
   src: string;
   alt: string;
   label: string;
+  positionClass?: string;
 };
 
 const racePackImages: RacePackImage[] = [
@@ -43,6 +44,7 @@ const racePackImages: RacePackImage[] = [
     src: medalImage,
     alt: `Medali dan lanyard ${EVENT_NAME}`,
     label: 'Medali Finisher',
+    positionClass: 'object-top',
   },
   {
     src: bibImage,
@@ -316,7 +318,7 @@ export default function App() {
                       <img
                         src={item.src}
                         alt={item.alt}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.positionClass ?? ''}`}
                       />
                     </button>
                     <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">{item.label}</div>
