@@ -218,16 +218,14 @@ export default function App() {
           >
             <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
               <span className="mb-4 flex flex-col items-center gap-3">
-                <span className="inline-flex flex-wrap items-center justify-center gap-3 text-xl sm:text-2xl md:text-3xl">
-                  <span>CiptaLandMegahBatam</span>
+                <span className="inline-flex flex-wrap items-center justify-center">
                   <img
                     src={citralandMegahLogo}
                     alt="Logo CiptaLand Megah Batam"
                     className="h-8 w-auto object-contain sm:h-10 md:h-12"
                   />
                 </span>
-                <span className="inline-flex flex-wrap items-center justify-center gap-3 text-base font-semibold sm:text-lg md:text-xl">
-                  <span>Organized By Phoenix Event Batam</span>
+                <span className="inline-flex flex-wrap items-center justify-center">
                   <img
                     src={phoenixEventBatamLogo}
                     alt="Logo Phoenix Event Batam"
