@@ -20,6 +20,7 @@ import citralandMegahLogo from './assets/citraland-megah-warna.png';
 import jerseyImage from './assets/jersey.jpg';
 import logoFunRun from './assets/logo-fun-run-5k.png';
 import medalImage from './assets/medals-and-lanyard.jpg';
+import routeMapImage from './assets/peta-rute.png';
 import bagImage from './assets/tas-running.jpg';
 
 // Link Google Form Pendaftaran
@@ -481,17 +482,12 @@ export default function App() {
           <div className="grid lg:grid-cols-3 gap-8 items-start max-w-7xl mx-auto">
             {/* Route Map Image */}
             <div className="lg:col-span-1 bg-slate-50 p-4 rounded-3xl border border-slate-200 shadow-sm">
-              <div className="aspect-square lg:aspect-[3/4] w-full rounded-2xl overflow-hidden bg-slate-200 relative group">
+              <div className="aspect-square lg:aspect-[3/4] w-full rounded-2xl overflow-hidden bg-white p-2">
                 <img 
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop" 
+                  src={routeMapImage}
                   alt="Peta Rute 5K" 
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-contain"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent flex flex-col justify-end p-6">
-                  <h3 className="text-white font-bold text-xl mb-1">Peta Rute 5K</h3>
-                  <p className="text-slate-200 text-sm">Ilustrasi rute lari Ciputra Batam Fun Run</p>
-                </div>
               </div>
             </div>
 
