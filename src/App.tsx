@@ -225,6 +225,9 @@ export default function App() {
                     className="h-8 w-auto object-contain sm:h-10 md:h-12"
                   />
                 </span>
+                <span className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-100 sm:text-base">
+                  Organized By :
+                </span>
                 <span className="inline-flex flex-wrap items-center justify-center">
                   <img
                     src={phoenixEventBatamLogo}
