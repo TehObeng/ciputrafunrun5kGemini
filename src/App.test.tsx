@@ -19,7 +19,7 @@ describe('App branding and race-pack modal', () => {
     expect(screen.getByAltText('Nomor dada BIB Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getByAltText('Tas running Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(navCta).toHaveClass('shrink-0', 'px-3', 'py-2', 'text-xs', 'sm:px-5', 'sm:py-2.5', 'sm:text-sm');
-    expect(medalImage).toHaveClass('scale-110', '-translate-y-6');
+    expect(medalImage).not.toHaveClass('scale-110', '-translate-y-6');
     expect(screen.getAllByText('Instagram: batamfunrun.id')).toHaveLength(2);
     expect(screen.getAllByText('Whatsapp: +62 853 5151 8858')).toHaveLength(2);
     expect(screen.getAllByRole('link', {name: 'Instagram: batamfunrun.id'})).toHaveLength(2);
