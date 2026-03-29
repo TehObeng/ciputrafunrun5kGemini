@@ -26,12 +26,14 @@ import bagImage from './assets/tas-running.jpg';
 const GOOGLE_FORM_URL = "https://forms.gle/gapqf3KjGvrc8SbG9";
 
 const EVENT_NAME = 'Ciputra Batam Fun Run 2026';
+const INSTAGRAM_HANDLE = 'batamfunrun.id';
+const WHATSAPP_NUMBER = '+62 853 5151 8858';
 
 type RacePackImage = {
   src: string;
   alt: string;
   label: string;
-  positionClass?: string;
+  imageClassName?: string;
 };
 
 const racePackImages: RacePackImage[] = [
@@ -44,7 +46,7 @@ const racePackImages: RacePackImage[] = [
     src: medalImage,
     alt: `Medali dan lanyard ${EVENT_NAME}`,
     label: 'Medali Finisher',
-    positionClass: 'object-top',
+    imageClassName: 'scale-110 -translate-y-6',
   },
   {
     src: bibImage,
@@ -57,6 +59,21 @@ const racePackImages: RacePackImage[] = [
     label: 'Goodie Bag',
   },
 ];
+
+function ContactInfoBlock({
+  className,
+  textClassName,
+}: {
+  className?: string;
+  textClassName?: string;
+}) {
+  return (
+    <div className={className}>
+      <p className={textClassName}>Instagram: {INSTAGRAM_HANDLE}</p>
+      <p className={textClassName}>Whatsapp: {WHATSAPP_NUMBER}</p>
+    </div>
+  );
+}
 
 function ImagePreviewModal({
   image,
@@ -318,7 +335,7 @@ export default function App() {
                       <img
                         src={item.src}
                         alt={item.alt}
-                        className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.positionClass ?? ''}`}
+                        className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.imageClassName ?? ''}`}
                       />
                     </button>
                     <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">{item.label}</div>
@@ -378,6 +395,11 @@ export default function App() {
                   <div className="text-xl font-extrabold text-slate-900">Rp 150k<span className="text-sm font-normal text-slate-500">/pax</span></div>
                 </div>
               </div>
+
+              <ContactInfoBlock
+                className="mt-6 rounded-2xl border border-slate-200 bg-white p-4 text-left"
+                textClassName="text-sm font-medium text-slate-700"
+              />
 
               <div className="mt-8">
                 <a 
@@ -487,6 +509,11 @@ export default function App() {
               © 2026 Ciputra Batam. All rights reserved.
             </p>
           </div>
+
+          <ContactInfoBlock
+            className="mt-6 space-y-1"
+            textClassName="text-sm text-slate-400"
+          />
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
             <img
