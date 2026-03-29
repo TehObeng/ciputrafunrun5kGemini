@@ -468,6 +468,104 @@ export default function App() {
         </div>
       </section>
 
+      {/* Route Details */}
+      <section className="py-24 bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Rute Lari 5K</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Nikmati pemandangan kota Batam yang indah di sepanjang rute lari yang telah kami siapkan.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 items-start max-w-7xl mx-auto">
+            {/* Route Map Image */}
+            <div className="lg:col-span-1 bg-slate-50 p-4 rounded-3xl border border-slate-200 shadow-sm">
+              <div className="aspect-square lg:aspect-[3/4] w-full rounded-2xl overflow-hidden bg-slate-200 relative group">
+                <img 
+                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop" 
+                  alt="Peta Rute 5K" 
+                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-105"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent flex flex-col justify-end p-6">
+                  <h3 className="text-white font-bold text-xl mb-1">Peta Rute 5K</h3>
+                  <p className="text-slate-200 text-sm">Ilustrasi rute lari Ciputra Batam Fun Run</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Titik Rute */}
+            <div className="lg:col-span-1 bg-slate-50 p-8 rounded-3xl border border-slate-200 h-full">
+              <h3 className="text-2xl font-bold text-slate-900 mb-6">Titik Rute</h3>
+              <ul className="space-y-4 relative before:absolute before:inset-0 before:ml-[11px] before:h-full before:w-0.5 before:bg-slate-200">
+                {[
+                  "CitraLand Megah Batam (Start)",
+                  "Masjid Raya Batam",
+                  "One Batam Mall",
+                  "AMP",
+                  "Mitra 10",
+                  "Bundaran BP Batam",
+                  "Mega Mall",
+                  "Bank BTN",
+                  "CitraLand Megah Batam (Finish)"
+                ].map((point, index, array) => (
+                  <li key={index} className="relative flex items-start gap-4">
+                    <div className={`w-6 h-6 rounded-full border-4 border-white shadow-sm shrink-0 mt-0.5 z-10 ${index === 0 ? 'bg-green-500' : index === array.length - 1 ? 'bg-red-500' : 'bg-blue-500'}`}></div>
+                    <span className={`font-medium ${index === 0 || index === array.length - 1 ? 'text-slate-900 font-bold' : 'text-slate-700'}`}>
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Water Stations & Legend */}
+            <div className="lg:col-span-1 space-y-8">
+              <div className="bg-blue-50 p-8 rounded-3xl border border-blue-100">
+                <h3 className="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+                  <Activity className="w-6 h-6 text-blue-600" />
+                  Pos Air Minum
+                </h3>
+                <p className="text-blue-800 mb-6 text-sm">
+                  Tetap terhidrasi! Kami menyediakan pos air minum di beberapa titik strategis sepanjang rute.
+                </p>
+                <div className="flex gap-4 justify-center">
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center text-white font-bold shadow-md mb-2">KM 1</div>
+                  </div>
+                  <div className="w-8 border-t-2 border-dashed border-blue-200 my-auto"></div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold shadow-md mb-2">KM 3</div>
+                  </div>
+                  <div className="w-8 border-t-2 border-dashed border-blue-200 my-auto"></div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center text-white font-bold shadow-md mb-2">KM 5</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-4">
+                <div className="bg-green-50 p-5 rounded-2xl border border-green-100 flex items-center gap-4">
+                  <div className="w-5 h-5 rounded-full bg-green-500 shrink-0 shadow-sm border-2 border-white"></div>
+                  <div>
+                    <span className="block font-bold text-green-900">Garis Start</span>
+                    <span className="text-sm text-green-700">CitraLand Megah Batam</span>
+                  </div>
+                </div>
+                <div className="bg-red-50 p-5 rounded-2xl border border-red-100 flex items-center gap-4">
+                  <div className="w-5 h-5 rounded-full bg-red-500 shrink-0 shadow-sm border-2 border-white"></div>
+                  <div>
+                    <span className="block font-bold text-red-900">Garis Finish</span>
+                    <span className="text-sm text-red-700">CitraLand Megah Batam</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Location Map */}
       <section className="py-24 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -478,7 +576,7 @@ export default function App() {
           <div className="bg-white p-4 rounded-3xl shadow-lg border border-slate-100 max-w-4xl mx-auto">
             <div className="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 relative">
               <iframe 
-                src="https://maps.google.com/maps?q=Ciputra%20Batam&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3470.7637217085844!2d104.05802468777274!3d1.1245903737664467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d988e6d3675a01%3A0x49e9d0d995ebd175!2sCitraLand%20Megah!5e1!3m2!1sen!2sid!4v1774784431443!5m2!1sen!2sid" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, position: 'absolute', top: 0, left: 0 }} 
