@@ -219,7 +219,7 @@ export default function App() {
                   <img
                     src={citralandMegahLogo}
                     alt="Logo CiptaLand Megah Batam"
-                    className="h-8 w-auto object-contain sm:h-10 md:h-12"
+                    className="h-24 w-auto object-contain sm:h-28 md:h-32"
                   />
                 </span>
               </span>
@@ -248,8 +248,8 @@ export default function App() {
               </a>
             </div>
 
-            <div className="mt-10 flex justify-center md:justify-end">
-              <div className="inline-flex flex-col items-center gap-3 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-white backdrop-blur-sm md:items-end">
+            <div className="mt-10 flex w-full justify-end">
+              <div className="inline-flex flex-col items-end gap-3 text-right text-white">
                 <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-100 sm:text-sm">
                   Organized By :
                 </span>
