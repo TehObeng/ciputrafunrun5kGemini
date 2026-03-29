@@ -20,6 +20,7 @@ import citralandMegahLogo from './assets/citraland-megah-warna.png';
 import jerseyImage from './assets/jersey.jpg';
 import logoFunRun from './assets/logo-fun-run-5k.png';
 import medalImage from './assets/medals-and-lanyard.jpg';
+import phoenixEventBatamLogo from './assets/phoenix-event-batam-logo.png';
 import routeMapImage from './assets/peta-rute.png';
 import bagImage from './assets/tas-running.jpg';
 
@@ -215,12 +216,26 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-blue-800/50 border border-blue-400/30 text-blue-200 text-sm font-semibold tracking-wider uppercase mb-6">
-              Ciputra Batam
-            </span>
             <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
-              Ciputra Batam <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
+              <span className="mb-4 flex flex-col items-center gap-3">
+                <span className="inline-flex flex-wrap items-center justify-center gap-3 text-xl sm:text-2xl md:text-3xl">
+                  <span>CiptaLandMegahBatam</span>
+                  <img
+                    src={citralandMegahLogo}
+                    alt="Logo CiptaLand Megah Batam"
+                    className="h-8 w-auto object-contain sm:h-10 md:h-12"
+                  />
+                </span>
+                <span className="inline-flex flex-wrap items-center justify-center gap-3 text-base font-semibold sm:text-lg md:text-xl">
+                  <span>Organized By Phoenix Event Batam</span>
+                  <img
+                    src={phoenixEventBatamLogo}
+                    alt="Logo Phoenix Event Batam"
+                    className="h-8 w-auto object-contain sm:h-10 md:h-12"
+                  />
+                </span>
+              </span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
                 Fun Run 2026
               </span>
             </h1>

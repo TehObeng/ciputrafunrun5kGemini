@@ -12,10 +12,20 @@ describe('App branding and race-pack modal', () => {
     const jerseyImage = screen.getByAltText('Jersey eksklusif Ciputra Batam Fun Run 2026');
     const medalImage = screen.getByAltText('Medali dan lanyard Ciputra Batam Fun Run 2026');
     const routeMapImage = screen.getByAltText('Peta Rute 5K');
+    const heroSection = screen
+      .getByText('Berlari dan nikmati keseruan tanpa batas! Acara lari santai untuk semua kalangan dengan hadiah puluhan juta rupiah.')
+      .closest('section');
+
+    expect(heroSection).not.toBeNull();
 
     expect(screen.getByText('Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getAllByAltText('Logo Ciputra Batam Fun Run 2026')).toHaveLength(2);
     expect(screen.getByAltText('Logo CitraLand Megah')).toBeInTheDocument();
+    expect(within(heroSection!).getByText('CiptaLandMegahBatam')).toBeInTheDocument();
+    expect(within(heroSection!).getByText('Organized By Phoenix Event Batam')).toBeInTheDocument();
+    expect(within(heroSection!).getByAltText('Logo CiptaLand Megah Batam')).toBeInTheDocument();
+    expect(within(heroSection!).getByAltText('Logo Phoenix Event Batam')).toBeInTheDocument();
+    expect(within(heroSection!).queryByText('Ciputra Batam')).not.toBeInTheDocument();
     expect(jerseyImage).toBeInTheDocument();
     expect(medalImage).toBeInTheDocument();
     expect(screen.getByAltText('Nomor dada BIB Ciputra Batam Fun Run 2026')).toBeInTheDocument();
