@@ -22,6 +22,10 @@ describe('App branding and race-pack modal', () => {
     expect(medalImage).toHaveClass('scale-110', '-translate-y-6');
     expect(screen.getAllByText('Instagram: batamfunrun.id')).toHaveLength(2);
     expect(screen.getAllByText('Whatsapp: +62 853 5151 8858')).toHaveLength(2);
+    expect(screen.getAllByRole('link', {name: 'Instagram: batamfunrun.id'})).toHaveLength(2);
+    expect(screen.getAllByRole('link', {name: 'Whatsapp: +62 853 5151 8858'})).toHaveLength(2);
+    expect(screen.getAllByRole('link', {name: 'Instagram: batamfunrun.id'})[0]).toHaveAttribute('href', 'https://instagram.com/batamfunrun.id');
+    expect(screen.getAllByRole('link', {name: 'Whatsapp: +62 853 5151 8858'})[0]).toHaveAttribute('href', 'https://wa.me/6285351518858');
   });
 
   it('opens and closes the race-pack image modal', () => {

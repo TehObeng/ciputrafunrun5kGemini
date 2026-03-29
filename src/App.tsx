@@ -28,6 +28,8 @@ const GOOGLE_FORM_URL = "https://forms.gle/gapqf3KjGvrc8SbG9";
 const EVENT_NAME = 'Ciputra Batam Fun Run 2026';
 const INSTAGRAM_HANDLE = 'batamfunrun.id';
 const WHATSAPP_NUMBER = '+62 853 5151 8858';
+const INSTAGRAM_URL = `https://instagram.com/${INSTAGRAM_HANDLE}`;
+const WHATSAPP_URL = 'https://wa.me/6285351518858';
 
 type RacePackImage = {
   src: string;
@@ -69,8 +71,22 @@ function ContactInfoBlock({
 }) {
   return (
     <div className={className}>
-      <p className={textClassName}>Instagram: {INSTAGRAM_HANDLE}</p>
-      <p className={textClassName}>Whatsapp: {WHATSAPP_NUMBER}</p>
+      <a
+        className={`block transition-colors hover:text-orange-500 ${textClassName ?? ''}`}
+        href={INSTAGRAM_URL}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Instagram: {INSTAGRAM_HANDLE}
+      </a>
+      <a
+        className={`block transition-colors hover:text-orange-500 ${textClassName ?? ''}`}
+        href={WHATSAPP_URL}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Whatsapp: {WHATSAPP_NUMBER}
+      </a>
     </div>
   );
 }
