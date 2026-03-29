@@ -29,7 +29,7 @@ export default function App() {
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                 <Activity className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-xl tracking-tight text-blue-900">CitraLand Fun Run</span>
+              <span className="font-bold text-xl tracking-tight text-blue-900">Ciputra Fun Run 5K</span>
             </div>
             <div>
               <a 
@@ -64,16 +64,16 @@ export default function App() {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block py-1 px-3 rounded-full bg-blue-800/50 border border-blue-400/30 text-blue-200 text-sm font-semibold tracking-wider uppercase mb-6">
-              CitraLand Megah Batam
+              Ciputra Batam
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
-              Treasure Hunt <br className="hidden md:block" />
+              Ciputra <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
                 Fun Run 5K
               </span>
             </h1>
             <p className="mt-4 text-xl text-blue-100 max-w-2xl mx-auto mb-10">
-              Berlari, berburu harta karun, dan nikmati keseruan tanpa batas! Acara lari santai untuk semua kalangan dengan hadiah puluhan juta rupiah.
+              Berlari dan nikmati keseruan tanpa batas! Acara lari santai untuk semua kalangan dengan hadiah puluhan juta rupiah.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -120,7 +120,7 @@ export default function App() {
               </div>
               <h3 className="text-sm font-medium text-slate-500 uppercase tracking-wider">Lokasi</h3>
               <p className="mt-1 text-lg font-bold text-slate-900">Emerald Hills</p>
-              <p className="text-sm text-slate-500">CitraLand Megah Batam</p>
+              <p className="text-sm text-slate-500">Ciputra Batam</p>
             </div>
             <div className="flex flex-col items-center text-center px-4">
               <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center mb-3">
@@ -169,7 +169,7 @@ export default function App() {
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Festival Pasca-Lari</h3>
               <p className="text-slate-600">
-                Nikmati hiburan DJ Live, beragam stan makanan, dan puncaknya: acara Treasure Hunt dengan hadiah menarik yang siap dibawa pulang!
+                Nikmati hiburan DJ Live, beragam stan makanan, dan puncaknya: pengundian doorprize dengan hadiah menarik yang siap dibawa pulang!
               </p>
             </div>
           </div>
@@ -185,12 +185,59 @@ export default function App() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Perlengkapan Peserta</h2>
               <p className="text-lg text-slate-600 mb-8">
-                Setiap peserta yang terdaftar akan mendapatkan Race Pack eksklusif CitraLand Fun Run 5K.
+                Setiap peserta yang terdaftar akan mendapatkan Race Pack eksklusif Ciputra Fun Run 5K.
               </p>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
+                  <div className="aspect-square overflow-hidden bg-slate-100">
+                    <img 
+                      src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600" 
+                      alt="Jersey Ciputra Fun Run 5K" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">Jersey Eksklusif</div>
+                </div>
+                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
+                  <div className="aspect-square overflow-hidden bg-slate-100">
+                    <img 
+                      src="https://images.unsplash.com/photo-1528297506728-9533d2ac3fa4?auto=format&fit=crop&q=80&w=600" 
+                      alt="Medali Finisher" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">Medali Finisher</div>
+                </div>
+                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
+                  <div className="aspect-square overflow-hidden bg-slate-100">
+                    <img 
+                      src="https://images.unsplash.com/photo-1533560904424-a0c61dc306fc?auto=format&fit=crop&q=80&w=600" 
+                      alt="Nomor Dada (BIB)" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">Nomor Dada (BIB)</div>
+                </div>
+                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
+                  <div className="aspect-square overflow-hidden bg-slate-100">
+                    <img 
+                      src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600" 
+                      alt="Goodie Bag" 
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">Goodie Bag</div>
+                </div>
+              </div>
               
               <ul className="space-y-4">
                 {[
-                  { icon: Shirt, text: "Jersey Eksklusif CitraLand Fun Run" },
+                  { icon: Shirt, text: "Jersey Eksklusif Ciputra Fun Run 5K" },
                   { icon: Medal, text: "Medali Finisher (untuk semua yang menyelesaikan rute)" },
                   { icon: Ticket, text: "Nomor Dada (Race Bib) dengan Chip Pencatat Waktu" },
                   { icon: Gift, text: "Goodie Bag & Lanyard" }
@@ -274,8 +321,8 @@ export default function App() {
               { time: "05:30", title: "Upacara Pembukaan & Pemanasan", desc: "Sesi pemanasan bersama instruktur zumba/aerobik." },
               { time: "06:00", title: "Mulai Lari (Race Start)", desc: "Pelepasan peserta lari 5K di garis start." },
               { time: "07:30", title: "Perayaan Garis Finish", desc: "Pembagian medali, hidangan ringan, dan hiburan musik." },
-              { time: "08:30", title: "Treasure Hunt", desc: "Pencarian harta karun seru di area acara." },
-              { time: "09:00", title: "Penutupan & Pembagian Hadiah", desc: "Pengumuman pemenang doorprize dan lomba foto." }
+              { time: "08:30", title: "Acara Hiburan & Doorprize", desc: "Pengundian hadiah menarik dan hiburan seru di area acara." },
+              { time: "09:00", title: "Penutupan & Pembagian Hadiah", desc: "Pengumuman pemenang utama dan lomba foto." }
             ].map((item, i) => (
               <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                 <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-blue-900 bg-orange-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
@@ -299,12 +346,12 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Lokasi Acara</h2>
-            <p className="text-lg text-slate-600">Emerald Hills, CitraLand Megah Batam</p>
+            <p className="text-lg text-slate-600">Emerald Hills, Ciputra Batam</p>
           </div>
           <div className="bg-white p-4 rounded-3xl shadow-lg border border-slate-100 max-w-4xl mx-auto">
             <div className="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 relative">
               <iframe 
-                src="https://maps.google.com/maps?q=CitraLand%20Megah%20Batam&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                src="https://maps.google.com/maps?q=Ciputra%20Batam&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, position: 'absolute', top: 0, left: 0 }} 
@@ -347,10 +394,10 @@ export default function App() {
           <div className="mt-20 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
               <Activity className="w-5 h-5 text-blue-500" />
-              <span className="font-bold text-white">CitraLand Fun Run</span>
+              <span className="font-bold text-white">Ciputra Fun Run 5K</span>
             </div>
             <p className="text-slate-500 text-sm">
-              © 2026 CitraLand Megah Batam. All rights reserved.
+              © 2026 Ciputra Batam. All rights reserved.
             </p>
           </div>
         </div>
