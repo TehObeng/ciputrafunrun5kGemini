@@ -14,9 +14,38 @@ import {
   Smile
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import bibImage from './assets/bib.jpg';
+import citralandMegahLogo from './assets/citraland-megah-warna.png';
+import jerseyImage from './assets/jersey.jpg';
+import logoFunRun from './assets/logo-fun-run-5k.png';
+import medalImage from './assets/medals-and-lanyard.jpg';
+import bagImage from './assets/tas-running.jpg';
 
 // Link Google Form Pendaftaran
 const GOOGLE_FORM_URL = "https://forms.gle/gapqf3KjGvrc8SbG9";
+
+const racePackImages = [
+  {
+    src: jerseyImage,
+    alt: 'Jersey eksklusif Ciputra Fun Run 5K',
+    label: 'Jersey Eksklusif',
+  },
+  {
+    src: medalImage,
+    alt: 'Medali dan lanyard Ciputra Fun Run 5K',
+    label: 'Medali Finisher',
+  },
+  {
+    src: bibImage,
+    alt: 'Nomor dada BIB Ciputra Fun Run 5K',
+    label: 'Nomor Dada (BIB)',
+  },
+  {
+    src: bagImage,
+    alt: 'Tas running Ciputra Fun Run 5K',
+    label: 'Goodie Bag',
+  },
+];
 
 export default function App() {
   return (
@@ -25,11 +54,12 @@ export default function App() {
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Activity className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-xl tracking-tight text-blue-900">Ciputra Fun Run 5K</span>
+            <div className="flex items-center">
+              <img
+                src={logoFunRun}
+                alt="Logo Ciputra Fun Run 5K"
+                className="h-10 w-auto object-contain sm:h-12"
+              />
             </div>
             <div>
               <a 
@@ -189,50 +219,18 @@ export default function App() {
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
-                  <div className="aspect-square overflow-hidden bg-slate-100">
-                    <img 
-                      src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&q=80&w=600" 
-                      alt="Jersey Ciputra Fun Run 5K" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                      referrerPolicy="no-referrer"
-                    />
+                {racePackImages.map((item) => (
+                  <div key={item.label} className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
+                    <div className="aspect-square overflow-hidden bg-slate-100">
+                      <img
+                        src={item.src}
+                        alt={item.alt}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">{item.label}</div>
                   </div>
-                  <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">Jersey Eksklusif</div>
-                </div>
-                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
-                  <div className="aspect-square overflow-hidden bg-slate-100">
-                    <img 
-                      src="https://images.unsplash.com/photo-1528297506728-9533d2ac3fa4?auto=format&fit=crop&q=80&w=600" 
-                      alt="Medali Finisher" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">Medali Finisher</div>
-                </div>
-                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
-                  <div className="aspect-square overflow-hidden bg-slate-100">
-                    <img 
-                      src="https://images.unsplash.com/photo-1533560904424-a0c61dc306fc?auto=format&fit=crop&q=80&w=600" 
-                      alt="Nomor Dada (BIB)" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">Nomor Dada (BIB)</div>
-                </div>
-                <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
-                  <div className="aspect-square overflow-hidden bg-slate-100">
-                    <img 
-                      src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=600" 
-                      alt="Goodie Bag" 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">Goodie Bag</div>
-                </div>
+                ))}
               </div>
               
               <ul className="space-y-4">
@@ -399,6 +397,14 @@ export default function App() {
             <p className="text-slate-500 text-sm">
               © 2026 Ciputra Batam. All rights reserved.
             </p>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <img
+              src={citralandMegahLogo}
+              alt="Logo CitraLand Megah"
+              className="h-12 w-auto object-contain sm:h-16"
+            />
           </div>
         </div>
       </footer>
