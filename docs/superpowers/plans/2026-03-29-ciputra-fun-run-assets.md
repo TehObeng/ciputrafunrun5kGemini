@@ -1,222 +1,263 @@
-# Ciputra Fun Run Assets Implementation Plan
+# Ciputra Batam Fun Run 2026 Branding And Modal Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Replace the website logo and race-pack placeholder images with the approved Google Drive assets, then add the corporate footer logo.
+**Goal:** Rebrand the page to `Ciputra Batam Fun Run 2026`, add the event name beside the navbar logo, show two logos in the footer, and add a clickable full-image modal for the four race-pack cards.
 
-**Architecture:** Store the approved files under `src/assets/`, import them directly into `src/App.tsx`, and render them in the existing header, race-pack grid, and new footer section. Validate the behavior with a focused component test plus TypeScript and production build verification.
+**Architecture:** Keep the app in `src/App.tsx`, introduce a small modal helper in that file, and manage the selected race-pack image with React state. Expand `src/App.test.tsx` to cover the updated branding plus the race-pack modal open and close behavior before implementing the UI changes.
 
 **Tech Stack:** React 19, Vite 6, TypeScript, Tailwind CSS, Vitest, Testing Library
 
 ---
 
-### Task 1: Add Test Harness And Write The Failing UI Test
+### Task 1: Write The Failing Branding And Modal Tests
 
 **Files:**
-- Modify: `package.json`
-- Modify: `vite.config.ts`
-- Create: `src/App.test.tsx`
-- Create: `src/setupTests.ts`
+- Modify: `src/App.test.tsx`
 
-- [ ] **Step 1: Add test dependencies and scripts**
+- [ ] **Step 1: Replace the existing test with branding and modal expectations**
 
-Update `package.json` to add a `test` script and these dev dependencies:
-
-```json
-"scripts": {
-  "dev": "vite --port=3000 --host=0.0.0.0",
-  "build": "vite build",
-  "preview": "vite preview",
-  "clean": "rm -rf dist",
-  "lint": "tsc --noEmit",
-  "test": "vitest run"
-},
-"devDependencies": {
-  "@testing-library/jest-dom": "^6.6.3",
-  "@testing-library/react": "^16.1.0",
-  "@types/express": "^4.17.21",
-  "@types/node": "^22.14.0",
-  "autoprefixer": "^10.4.21",
-  "jsdom": "^25.0.1",
-  "tailwindcss": "^4.1.14",
-  "tsx": "^4.21.0",
-  "typescript": "~5.8.2",
-  "vite": "^6.2.0",
-  "vitest": "^2.1.8"
-}
-```
-
-- [ ] **Step 2: Add Vitest config to Vite**
-
-Update `vite.config.ts` to include a `test` block:
-
-```ts
-test: {
-  environment: 'jsdom',
-  setupFiles: './src/setupTests.ts',
-},
-```
-
-- [ ] **Step 3: Add test setup file**
-
-Create `src/setupTests.ts`:
-
-```ts
-import '@testing-library/jest-dom/vitest';
-```
-
-- [ ] **Step 4: Write the failing asset-rendering test**
-
-Create `src/App.test.tsx`:
+Update `src/App.test.tsx` so it checks the renamed branding, both footer logos, and race-pack modal behavior:
 
 ```tsx
-import {render, screen} from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
+import {describe, expect, it} from 'vitest';
+
 import App from './App';
 
-describe('App asset rendering', () => {
-  it('renders the approved local branding and race-pack images', () => {
+describe('App branding and race-pack modal', () => {
+  it('renders the updated Ciputra Batam Fun Run 2026 branding and both footer logos', () => {
     render(<App />);
 
-    expect(screen.getByAltText('Logo Ciputra Fun Run 5K')).toBeInTheDocument();
-    expect(screen.getByAltText('Jersey eksklusif Ciputra Fun Run 5K')).toBeInTheDocument();
-    expect(screen.getByAltText('Medali dan lanyard Ciputra Fun Run 5K')).toBeInTheDocument();
-    expect(screen.getByAltText('Nomor dada BIB Ciputra Fun Run 5K')).toBeInTheDocument();
-    expect(screen.getByAltText('Tas running Ciputra Fun Run 5K')).toBeInTheDocument();
+    expect(screen.getByText('Ciputra Batam Fun Run 2026')).toBeInTheDocument();
+    expect(screen.getAllByAltText('Logo Ciputra Batam Fun Run 2026')).toHaveLength(2);
     expect(screen.getByAltText('Logo CitraLand Megah')).toBeInTheDocument();
+    expect(screen.getByAltText('Jersey eksklusif Ciputra Batam Fun Run 2026')).toBeInTheDocument();
+  });
+
+  it('opens and closes the race-pack image modal', () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByRole('button', {name: 'Lihat gambar Jersey Eksklusif'}));
+
+    expect(screen.getByRole('dialog', {name: 'Preview gambar race pack'})).toBeInTheDocument();
+    expect(screen.getByAltText('Jersey eksklusif Ciputra Batam Fun Run 2026')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', {name: 'Tutup preview gambar'}));
+
+    expect(screen.queryByRole('dialog', {name: 'Preview gambar race pack'})).not.toBeInTheDocument();
   });
 });
 ```
 
-- [ ] **Step 5: Run the test to verify it fails**
+- [ ] **Step 2: Run the focused test to verify it fails**
 
-Run: `npm test -- --runInBand`
+Run: `npm test -- src/App.test.tsx`
 
-Expected: FAIL because the current app does not render the required logo and footer image alt texts.
+Expected: FAIL because the current app still renders `Ciputra Fun Run 5K`, has only one footer logo image, and does not expose clickable race-pack modal controls.
 
-### Task 2: Add The Approved Local Image Assets
-
-**Files:**
-- Create: `src/assets/logo-fun-run-5k.png`
-- Create: `src/assets/jersey.jpg`
-- Create: `src/assets/medals-and-lanyard.jpg`
-- Create: `src/assets/bib.jpg`
-- Create: `src/assets/tas-running.jpg`
-- Create: `src/assets/citraland-megah-warna.png`
-
-- [ ] **Step 1: Create the asset directory**
-
-Run: `mkdir -p src/assets`
-
-Expected: `src/assets` exists.
-
-- [ ] **Step 2: Download the approved assets from Google Drive**
-
-Run:
-
-```bash
-curl -L 'https://drive.google.com/uc?export=download&id=1y51YpoRMKjTEIiDBfJcJGivw63aJaLCA' -o 'src/assets/logo-fun-run-5k.png'
-curl -L 'https://drive.google.com/uc?export=download&id=1XrtyMkDuEZb258riRdyQErQzrpUmAvB-' -o 'src/assets/jersey.jpg'
-curl -L 'https://drive.google.com/uc?export=download&id=1gYpqLxzGsLLaRYmgFuYCrAao7kUUlsDG' -o 'src/assets/medals-and-lanyard.jpg'
-curl -L 'https://drive.google.com/uc?export=download&id=10h7wckoF44HTwbqYy1qprtRm0a40BNWh' -o 'src/assets/bib.jpg'
-curl -L 'https://drive.google.com/uc?export=download&id=140zCj8d50E0xqse2xPZ0yMvUYtAxWtW0' -o 'src/assets/tas-running.jpg'
-curl -L 'https://drive.google.com/uc?export=download&id=1mbZJY8HIBICMmKGwh1Lay55H3KRQVQ-J' -o 'src/assets/citraland-megah-warna.png'
-```
-
-Expected: all six files exist under `src/assets/`.
-
-### Task 3: Replace Remote And Icon-Based UI With Local Assets
+### Task 2: Implement The Approved Branding Updates
 
 **Files:**
 - Modify: `src/App.tsx`
 
-- [ ] **Step 1: Import the local assets**
+- [ ] **Step 1: Add the event name constant and updated race-pack metadata**
 
-Add these imports near the top of `src/App.tsx`:
-
-```ts
-import logoFunRun from './assets/logo-fun-run-5k.png';
-import jerseyImage from './assets/jersey.jpg';
-import medalImage from './assets/medals-and-lanyard.jpg';
-import bibImage from './assets/bib.jpg';
-import bagImage from './assets/tas-running.jpg';
-import citralandMegahLogo from './assets/citraland-megah-warna.png';
-```
-
-- [ ] **Step 2: Replace the header lockup with the approved logo**
-
-Update the nav-brand block to render the local image:
+Define a shared event-name string and update the race-pack alt text values:
 
 ```tsx
-<div className="flex items-center">
+const EVENT_NAME = 'Ciputra Batam Fun Run 2026';
+```
+
+Use it in the race-pack image array:
+
+```tsx
+alt: `Jersey eksklusif ${EVENT_NAME}`,
+```
+
+- [ ] **Step 2: Add the navbar text beside the existing logo**
+
+Render the navbar brand as:
+
+```tsx
+<div className="flex items-center gap-3">
   <img
     src={logoFunRun}
-    alt="Logo Ciputra Fun Run 5K"
-    className="h-10 w-auto sm:h-12"
+    alt={`Logo ${EVENT_NAME}`}
+    className="h-10 w-auto object-contain sm:h-12"
+  />
+  <span className="text-sm font-bold leading-tight text-slate-900 sm:text-base">
+    {EVENT_NAME}
+  </span>
+</div>
+```
+
+- [ ] **Step 3: Replace visible `Ciputra Fun Run 5K` copy**
+
+Update visible branding instances such as:
+
+```tsx
+<h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
+  Ciputra Batam <br className="hidden md:block" />
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
+    Fun Run 2026
+  </span>
+</h1>
+```
+
+And:
+
+```tsx
+<p className="text-lg text-slate-600 mb-8">
+  Setiap peserta yang terdaftar akan mendapatkan Race Pack eksklusif {EVENT_NAME}.
+</p>
+```
+
+- [ ] **Step 4: Show both logos in the footer**
+
+Render the footer logo row with both images:
+
+```tsx
+<div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+  <img
+    src={logoFunRun}
+    alt={`Logo ${EVENT_NAME}`}
+    className="h-14 w-auto object-contain sm:h-16"
+  />
+  <img
+    src={citralandMegahLogo}
+    alt="Logo CitraLand Megah"
+    className="h-12 w-auto object-contain sm:h-16"
   />
 </div>
 ```
 
-- [ ] **Step 3: Replace the race-pack remote images**
+- [ ] **Step 5: Run the focused test to confirm only the branding test passes further**
 
-Render the four approved local images with these alt texts:
+Run: `npm test -- src/App.test.tsx`
 
-```tsx
-[
-  {
-    image: jerseyImage,
-    alt: 'Jersey eksklusif Ciputra Fun Run 5K',
-    label: 'Jersey Eksklusif',
-  },
-  {
-    image: medalImage,
-    alt: 'Medali dan lanyard Ciputra Fun Run 5K',
-    label: 'Medali Finisher',
-  },
-  {
-    image: bibImage,
-    alt: 'Nomor dada BIB Ciputra Fun Run 5K',
-    label: 'Nomor Dada (BIB)',
-  },
-  {
-    image: bagImage,
-    alt: 'Tas running Ciputra Fun Run 5K',
-    label: 'Goodie Bag',
-  },
-]
-```
+Expected: the branding assertions move closer to green, but the modal test still fails until the modal behavior exists.
 
-- [ ] **Step 4: Add the footer logo at the bottom**
+### Task 3: Add The Race-Pack Image Modal
 
-Append a footer section near the end of the component:
+**Files:**
+- Modify: `src/App.tsx`
+
+- [ ] **Step 1: Add modal state and a small preview component**
+
+Add state and a helper component:
 
 ```tsx
-<footer className="border-t border-slate-200 bg-white py-10">
-  <div className="mx-auto flex max-w-7xl justify-center px-4 sm:px-6 lg:px-8">
-    <img
-      src={citralandMegahLogo}
-      alt="Logo CitraLand Megah"
-      className="h-12 w-auto sm:h-16"
-    />
-  </div>
-</footer>
+const [selectedRacePackImage, setSelectedRacePackImage] = React.useState<RacePackImage | null>(null);
 ```
 
-- [ ] **Step 5: Run the focused test to verify it passes**
+```tsx
+function ImagePreviewModal({
+  image,
+  onClose,
+}: {
+  image: RacePackImage | null;
+  onClose: () => void;
+}) {
+  if (!image) {
+    return null;
+  }
 
-Run: `npm test -- --runInBand`
+  return (
+    <div
+      aria-label="Preview gambar race pack"
+      aria-modal="true"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 p-4"
+      role="dialog"
+      onClick={onClose}
+    >
+      <button
+        aria-label="Tutup preview gambar"
+        className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-2 text-sm font-semibold text-white"
+        onClick={onClose}
+        type="button"
+      >
+        Tutup
+      </button>
+      <img
+        src={image.src}
+        alt={image.alt}
+        className="max-h-[85vh] max-w-[90vw] object-contain"
+        onClick={(event) => event.stopPropagation()}
+      />
+    </div>
+  );
+}
+```
 
-Expected: PASS with the asset-rendering test green.
+- [ ] **Step 2: Make race-pack image tiles clickable buttons**
+
+Wrap each race-pack thumbnail with a button:
+
+```tsx
+<button
+  aria-label={`Lihat gambar ${item.label}`}
+  className="aspect-square w-full overflow-hidden bg-slate-100 text-left"
+  onClick={() => setSelectedRacePackImage(item)}
+  type="button"
+>
+  <img
+    src={item.src}
+    alt={item.alt}
+    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+  />
+</button>
+```
+
+- [ ] **Step 3: Add Escape-key close handling and render the modal**
+
+Add a `useEffect` tied to `selectedRacePackImage`:
+
+```tsx
+React.useEffect(() => {
+  if (!selectedRacePackImage) {
+    return;
+  }
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setSelectedRacePackImage(null);
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyDown);
+  return () => window.removeEventListener('keydown', handleKeyDown);
+}, [selectedRacePackImage]);
+```
+
+Render near the end of the component:
+
+```tsx
+<ImagePreviewModal
+  image={selectedRacePackImage}
+  onClose={() => setSelectedRacePackImage(null)}
+/>
+```
+
+- [ ] **Step 4: Run the focused test to verify it passes**
+
+Run: `npm test -- src/App.test.tsx`
+
+Expected: PASS with both branding and modal tests green.
 
 ### Task 4: Run Full Verification
 
 **Files:**
-- Modify: `package-lock.json`
+- Modify: `src/App.tsx`
+- Modify: `src/App.test.tsx`
+- Modify: `docs/superpowers/specs/2026-03-29-ciputra-fun-run-assets-design.md`
+- Modify: `docs/superpowers/plans/2026-03-29-ciputra-fun-run-assets.md`
 
-- [ ] **Step 1: Install the new test dependencies**
+- [ ] **Step 1: Run the full test suite**
 
-Run: `npm install`
+Run: `npm test`
 
-Expected: install completes and writes the updated lockfile.
+Expected: PASS with all tests green.
 
 - [ ] **Step 2: Run the TypeScript check**
 
@@ -228,4 +269,4 @@ Expected: exit code 0.
 
 Run: `npm run build`
 
-Expected: Vite build succeeds with no unresolved asset import errors.
+Expected: Vite build succeeds and emits the production bundle without asset or type errors.

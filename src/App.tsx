@@ -11,7 +11,8 @@ import {
   ChevronRight,
   Camera,
   Music,
-  Smile
+  Smile,
+  X
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import bibImage from './assets/bib.jpg';
@@ -24,42 +25,127 @@ import bagImage from './assets/tas-running.jpg';
 // Link Google Form Pendaftaran
 const GOOGLE_FORM_URL = "https://forms.gle/gapqf3KjGvrc8SbG9";
 
-const racePackImages = [
+const EVENT_NAME = 'Ciputra Batam Fun Run 2026';
+
+type RacePackImage = {
+  src: string;
+  alt: string;
+  label: string;
+};
+
+const racePackImages: RacePackImage[] = [
   {
     src: jerseyImage,
-    alt: 'Jersey eksklusif Ciputra Fun Run 5K',
+    alt: `Jersey eksklusif ${EVENT_NAME}`,
     label: 'Jersey Eksklusif',
   },
   {
     src: medalImage,
-    alt: 'Medali dan lanyard Ciputra Fun Run 5K',
+    alt: `Medali dan lanyard ${EVENT_NAME}`,
     label: 'Medali Finisher',
   },
   {
     src: bibImage,
-    alt: 'Nomor dada BIB Ciputra Fun Run 5K',
+    alt: `Nomor dada BIB ${EVENT_NAME}`,
     label: 'Nomor Dada (BIB)',
   },
   {
     src: bagImage,
-    alt: 'Tas running Ciputra Fun Run 5K',
+    alt: `Tas running ${EVENT_NAME}`,
     label: 'Goodie Bag',
   },
 ];
 
+function ImagePreviewModal({
+  image,
+  onClose,
+}: {
+  image: RacePackImage | null;
+  onClose: () => void;
+}) {
+  React.useEffect(() => {
+    if (!image) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [image]);
+
+  if (!image) {
+    return null;
+  }
+
+  return (
+    <div
+      aria-label="Preview gambar race pack"
+      aria-modal="true"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/90 p-4"
+      role="dialog"
+      onClick={onClose}
+    >
+      <div
+        className="relative flex max-h-full max-w-full items-center justify-center"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          aria-label="Tutup preview gambar"
+          className="absolute right-3 top-3 rounded-full bg-slate-950/70 p-2 text-white transition-colors hover:bg-slate-950"
+          onClick={onClose}
+          type="button"
+        >
+          <X aria-hidden="true" className="h-5 w-5" />
+        </button>
+        <img
+          src={image.src}
+          alt={image.alt}
+          className="max-h-[85vh] max-w-[90vw] object-contain"
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
+  const [selectedRacePackImage, setSelectedRacePackImage] = React.useState<RacePackImage | null>(null);
+
+  React.useEffect(() => {
+    if (!selectedRacePackImage) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedRacePackImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedRacePackImage]);
+
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
+            <div className="flex items-center gap-3">
               <img
                 src={logoFunRun}
-                alt="Logo Ciputra Fun Run 5K"
+                alt={`Logo ${EVENT_NAME}`}
                 className="h-10 w-auto object-contain sm:h-12"
               />
+              <span className="text-sm font-bold leading-tight text-slate-900 sm:text-base">
+                {EVENT_NAME}
+              </span>
             </div>
             <div>
               <a 
@@ -97,9 +183,9 @@ export default function App() {
               Ciputra Batam
             </span>
             <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
-              Ciputra <br className="hidden md:block" />
+              Ciputra Batam <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
-                Fun Run 5K
+                Fun Run 2026
               </span>
             </h1>
             <p className="mt-4 text-xl text-blue-100 max-w-2xl mx-auto mb-10">
@@ -215,19 +301,24 @@ export default function App() {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Perlengkapan Peserta</h2>
               <p className="text-lg text-slate-600 mb-8">
-                Setiap peserta yang terdaftar akan mendapatkan Race Pack eksklusif Ciputra Fun Run 5K.
+                Setiap peserta yang terdaftar akan mendapatkan Race Pack eksklusif {EVENT_NAME}.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {racePackImages.map((item) => (
                   <div key={item.label} className="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm group">
-                    <div className="aspect-square overflow-hidden bg-slate-100">
+                    <button
+                      aria-label={`Lihat gambar ${item.label}`}
+                      className="aspect-square w-full overflow-hidden bg-slate-100 text-left cursor-zoom-in focus:outline-none focus:ring-4 focus:ring-blue-200"
+                      onClick={() => setSelectedRacePackImage(item)}
+                      type="button"
+                    >
                       <img
                         src={item.src}
                         alt={item.alt}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                    </div>
+                    </button>
                     <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">{item.label}</div>
                   </div>
                 ))}
@@ -235,7 +326,7 @@ export default function App() {
               
               <ul className="space-y-4">
                 {[
-                  { icon: Shirt, text: "Jersey Eksklusif Ciputra Fun Run 5K" },
+                  { icon: Shirt, text: `Jersey Eksklusif ${EVENT_NAME}` },
                   { icon: Medal, text: "Medali Finisher (untuk semua yang menyelesaikan rute)" },
                   { icon: Ticket, text: "Nomor Dada (Race Bib) dengan Chip Pencatat Waktu" },
                   { icon: Gift, text: "Goodie Bag & Lanyard" }
@@ -389,17 +480,18 @@ export default function App() {
             Daftar Sekarang via Google Form
           </a>
           
-          <div className="mt-20 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Activity className="w-5 h-5 text-blue-500" />
-              <span className="font-bold text-white">Ciputra Fun Run 5K</span>
-            </div>
+          <div className="mt-20 pt-8 border-t border-slate-800">
             <p className="text-slate-500 text-sm">
               © 2026 Ciputra Batam. All rights reserved.
             </p>
           </div>
 
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+            <img
+              src={logoFunRun}
+              alt={`Logo ${EVENT_NAME}`}
+              className="h-14 w-auto object-contain sm:h-16"
+            />
             <img
               src={citralandMegahLogo}
               alt="Logo CitraLand Megah"
@@ -408,6 +500,11 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      <ImagePreviewModal
+        image={selectedRacePackImage}
+        onClose={() => setSelectedRacePackImage(null)}
+      />
     </div>
   );
 }

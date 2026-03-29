@@ -1,97 +1,81 @@
-# Ciputra Fun Run Asset Refresh Design
+# Ciputra Batam Fun Run 2026 Branding And Race-Pack Modal Design
 
 ## Goal
 
-Replace the website's placeholder visual assets with the user-provided branding and race-pack images from Google Drive while keeping the current page structure and copy intact.
+Update the single-page event site so the visible event branding reads `Ciputra Batam Fun Run 2026`, add the event name beside the navbar logo, render two logos in the footer, and make the four race-pack images open in a full-image modal.
 
 ## Current State
 
-- The site has no local image assets in the repository.
-- The top navigation uses a `lucide-react` `Activity` icon plus text instead of a real logo.
-- The race-pack section lists items with icon bullets instead of product photos.
-- The page has no footer logo.
+- The page already uses local bundled assets for the fun-run logo, race-pack images, and the CitraLand Megah footer logo.
+- Visible event copy still references `Ciputra Fun Run 5K`.
+- The navbar shows only the logo image without the full event name beside it.
+- The footer shows the event name as text plus only one logo.
+- Race-pack images are static cards and cannot be enlarged.
 
 ## Approved Scope
 
-Only these assets will be replaced or added:
-
-- Main site logo
-- Jersey image
-- Medal image
-- BIB image
-- Bag image
-- Footer logo at the very bottom
-
-No other copy, layout sections, or feature behavior changes are in scope.
-
-## Source Asset Mapping
-
-Assets will be downloaded from the shared Google Drive folder and stored locally in the repository.
-
-- `Logo-Fun-Run-5K.png`: primary site logo used in the top navigation
-- `Jersey.jpg`: race-pack jersey image
-- `medals-+-Lanyard.jpg`: race-pack medal image
-- `BIB.jpg`: race-pack bib image
-- `Tas Running.jpg`: race-pack bag image
-- `CitraLand Megah Warna.png`: footer logo shown at the bottom of the page
-
-## Architecture
-
-The application will move from external or icon-based visuals to local bundled assets served through Vite. Images will live under `src/assets/` and be imported into `src/App.tsx`, which remains the single page component for this repo.
-
-The implementation stays intentionally narrow: only asset storage, asset imports, and the existing JSX markup required to render those images will change. Existing text content, CTA links, and event information remain unchanged.
-
-## UI Changes
-
-### Header Logo
-
-- Replace the blue icon box and adjacent text lockup with `Logo-Fun-Run-5K.png`.
-- Keep the header height visually stable so the sticky nav behavior does not change.
-- Use responsive sizing so the logo remains legible on desktop and mobile.
-
-### Race-Pack Images
-
-- Replace the four icon rows in the participant pack section with rows that include the corresponding real images.
-- Keep each item label:
-  - Jersey Eksklusif CitraLand Fun Run
-  - Medali Finisher (untuk semua yang menyelesaikan rute)
-  - Nomor Dada (Race Bib) dengan Chip Pencatat Waktu
-  - Goodie Bag & Lanyard
-- Preserve the card-like row styling and ensure images do not distort.
-
-### Footer Logo
-
-- Add a new footer section at the very bottom of the page.
-- Display `CitraLand Megah Warna.png` centered in that footer.
-- Keep the footer visually simple so it functions as a branding close, not a new content block.
-
-## Data Flow
-
-- Asset files are committed to the repository under `src/assets/`.
-- `src/App.tsx` imports those files directly.
-- Vite resolves the imports into built asset URLs during development and production build.
-
-No runtime fetches, Drive links, or CMS-style indirection are introduced.
-
-## Error Handling
-
-- The implementation avoids remote image dependencies for these assets, which removes Drive-link failure risk.
-- Every image will include descriptive `alt` text.
-- Image containers will use bounded dimensions and `object-fit` styling to prevent layout breakage from unexpected image aspect ratios.
-
-## Testing And Verification
-
-- Run the local build after the asset changes to confirm the app compiles with the new image imports.
-- Verify there are no unresolved imports or TypeScript errors related to the new assets.
-- Check the rendered layout manually in the browser-equivalent build output expectations:
-  - header logo renders
-  - four race-pack images render
-  - footer logo renders
-  - mobile and desktop layout stay intact
+- Replace visible `Ciputra Fun Run 5K` branding with `Ciputra Batam Fun Run 2026`.
+- Add the text `Ciputra Batam Fun Run 2026` beside the navbar logo.
+- Show two footer logos: the fun-run logo and the CitraLand Megah logo.
+- Make only the four race-pack images clickable.
+- Clicking a race-pack image opens a modal that shows the full image only, centered and uncropped.
 
 ## Out Of Scope
 
-- Rebranding page copy beyond existing text already present in the repo
-- Adding new site sections
-- Replacing the hero background image unless requested separately
-- Adding more corporate logos outside the new footer logo
+- Making the hero background image clickable
+- Making the navbar or footer logos clickable
+- Changing the event schedule, ticket pricing, CTA links, or map behavior
+- Adding captions, thumbnails, or text inside the modal
+
+## Architecture
+
+`src/App.tsx` remains the page entry point and will own both the race-pack image data and the modal open state. A small helper component in the same file will render the overlay so the modal behavior stays isolated without introducing unnecessary file sprawl in this small app.
+
+The modal will be purely client-side state: clicking a race-pack card stores the selected image object in React state, and clearing that state closes the modal. Images continue to come from local Vite asset imports, so no new network dependency is introduced.
+
+## UI Changes
+
+### Navbar
+
+- Keep the existing fun-run logo image.
+- Add a text lockup immediately to its right reading `Ciputra Batam Fun Run 2026`.
+- Preserve the existing sticky layout and responsive sizing.
+
+### Copy Updates
+
+- Replace visible `Ciputra Fun Run 5K` references with `Ciputra Batam Fun Run 2026`.
+- Update related image `alt` text to match the new event name where appropriate.
+- Keep all non-branding content, pricing, and schedule copy unchanged.
+
+### Race-Pack Cards
+
+- Keep the current four-card layout and labels.
+- Turn each image area into an obvious interactive target without changing the overall grid structure.
+- Preserve cropped thumbnails in the grid for layout consistency.
+
+### Image Modal
+
+- Open only from the four race-pack image cards.
+- Render on top of a dark semi-opaque backdrop.
+- Show the selected image centered with `object-contain` behavior so the full image stays visible and uncropped.
+- Show no text content inside the modal.
+- Support dismissal by clicking outside the image, pressing a close button, or using the Escape key.
+
+### Footer
+
+- Replace the footer text-only brand lockup with a logo row.
+- Show the fun-run logo and the CitraLand Megah logo together in the footer.
+- Keep the copyright line.
+
+## Error Handling And Accessibility
+
+- Each interactive race-pack image uses a semantic button so keyboard users can open the modal.
+- The modal exposes a close control and Escape-key handling so users can dismiss it reliably.
+- The overlay will stop accidental background interaction while open.
+- Image `alt` text remains descriptive even though the modal itself contains no captions.
+
+## Testing And Verification
+
+- Update component tests to cover the new visible branding.
+- Add a regression test that clicks a race-pack image, confirms the modal image appears, and then closes it.
+- Run `npm test`, `npm run lint`, and `npm run build` after implementation.
