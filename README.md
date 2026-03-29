@@ -2,19 +2,25 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Ciputra Batam Fun Run 5K
 
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/f8084681-6c1c-4066-90b9-018272ca3731
+Landing page for the Ciputra Batam Fun Run 5K event site.
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+Prerequisite: Node.js
 
+```bash
+npm install
+npm run dev
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Production
+
+```bash
+npm install
+npm test
+npm run lint
+npm run build
+HOST=127.0.0.1 PORT=3200 npm run start
+```
