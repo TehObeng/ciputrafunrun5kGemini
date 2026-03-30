@@ -611,7 +611,7 @@ export default function App() {
             textClassName="text-sm text-slate-400"
           />
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10">
             <img
               src={logoFunRun}
               alt={`Logo ${EVENT_NAME}`}
@@ -621,6 +621,11 @@ export default function App() {
               src={citralandMegahLogo}
               alt="Logo CitraLand Megah"
               className="h-12 w-auto object-contain sm:h-16"
+            />
+            <img
+              src={phoenixEventBatamLogo}
+              alt="Logo Phoenix Event Batam"
+              className="h-10 w-auto object-contain sm:h-14 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]"
             />
           </div>
         </div>
