@@ -20,6 +20,7 @@ describe('asset files', () => {
   it('keeps the published logos and images as valid image binaries', () => {
     expectSignature('logo-fun-run-5k.png', pngSignature);
     expectSignature('citraland-megah-warna.png', pngSignature);
+    expectSignature('peb-brand.png', pngSignature);
     expectSignature('peta-rute.png', pngSignature);
     expectSignature('bib.jpg', jpegSignature);
     expectSignature('jersey.jpg', jpegSignature);
