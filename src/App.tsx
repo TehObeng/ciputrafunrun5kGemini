@@ -196,7 +196,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden bg-blue-900">
+      <section className="relative pt-8 pb-32 overflow-hidden bg-blue-900">
         <div className="absolute inset-0 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=2070&auto=format&fit=crop" 
@@ -214,12 +214,12 @@ export default function App() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
-              <span className="mb-4 flex flex-col items-center gap-3">
+              <span className="mb-6 flex flex-col items-center gap-3">
                 <span className="inline-flex flex-wrap items-center justify-center">
                   <img
                     src={citralandMegahLogo}
-                    alt="Logo CiptaLand Megah Batam"
-                    className="h-24 w-auto object-contain sm:h-28 md:h-32"
+                    alt="Logo CitraLand Megah Batam"
+                    className="h-24 w-auto object-contain sm:h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]"
                   />
                 </span>
               </span>
@@ -248,15 +248,15 @@ export default function App() {
               </a>
             </div>
 
-            <div className="mt-10 flex w-full justify-end">
-              <div className="inline-flex flex-col items-end gap-3 text-right text-white">
-                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-100 sm:text-sm">
-                  Organized By :
+            <div className="mt-12 flex w-full justify-end">
+              <div className="inline-flex flex-col items-end gap-2 text-white">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-200 sm:text-xs">
+                  Organized By
                 </span>
                 <img
                   src={phoenixEventBatamLogo}
                   alt="Logo Phoenix Event Batam"
-                  className="h-8 w-auto object-contain sm:h-10 md:h-12"
+                  className="h-8 w-auto object-contain sm:h-10 md:h-12 drop-shadow-[0_0_12px_rgba(255,255,255,0.5)]"
                 />
               </div>
             </div>
@@ -457,13 +457,25 @@ export default function App() {
 
           <div className="grid lg:grid-cols-3 gap-8 items-start max-w-7xl mx-auto">
             {/* Route Map Image */}
-            <div className="lg:col-span-1 bg-slate-50 p-4 rounded-3xl border border-slate-200 shadow-sm">
-              <div className="aspect-square lg:aspect-[3/4] w-full rounded-2xl overflow-hidden bg-white p-2">
+            <div 
+              className="lg:col-span-1 bg-slate-50 p-4 rounded-3xl border border-slate-200 shadow-sm cursor-pointer transition-transform hover:scale-[1.02] group"
+              onClick={() => setSelectedRacePackImage({
+                src: routeMapImage,
+                alt: 'Peta Rute 5K',
+                label: 'Peta Rute 5K'
+              })}
+            >
+              <div className="aspect-square lg:aspect-[3/4] w-full rounded-2xl overflow-hidden bg-white p-2 relative">
                 <img 
                   src={routeMapImage}
                   alt="Peta Rute 5K" 
                   className="w-full h-full object-contain"
                 />
+                <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="bg-white/90 text-slate-900 px-4 py-2 rounded-full text-sm font-medium shadow-sm">
+                    Klik untuk memperbesar
+                  </span>
+                </div>
               </div>
             </div>
 
