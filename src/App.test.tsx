@@ -10,6 +10,7 @@ describe('App branding and race-pack modal', () => {
     const nav = screen.getByRole('navigation');
     const navCta = within(nav).getByRole('link', {name: 'Daftar Sekarang'});
     const medalImage = screen.getByAltText('Medali dan lanyard Ciputra Batam Fun Run 2026');
+    const locationMap = screen.getByTitle('Peta lokasi acara');
 
     expect(screen.getByText('Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getAllByAltText('Logo Ciputra Batam Fun Run 2026')).toHaveLength(2);
@@ -26,6 +27,10 @@ describe('App branding and race-pack modal', () => {
     expect(screen.getAllByRole('link', {name: 'Whatsapp: +62 853 5151 8858'})).toHaveLength(2);
     expect(screen.getAllByRole('link', {name: 'Instagram: batamfunrun.id'})[0]).toHaveAttribute('href', 'https://instagram.com/batamfunrun.id');
     expect(screen.getAllByRole('link', {name: 'Whatsapp: +62 853 5151 8858'})[0]).toHaveAttribute('href', 'https://wa.me/6285351518858');
+    expect(locationMap).toHaveAttribute(
+      'src',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2063.728570563429!2d104.05843210675899!3d1.1244285816043933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d988e6d3675a01%3A0x49e9d0d995ebd175!2sCitraLand%20Megah!5e1!3m2!1sen!2sid!4v1774855404625!5m2!1sen!2sid',
+    );
   });
 
   it('opens and closes the race-pack image modal', () => {

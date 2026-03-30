@@ -561,7 +561,8 @@ export default function App() {
           <div className="bg-white p-4 rounded-3xl shadow-lg border border-slate-100 max-w-4xl mx-auto">
             <div className="aspect-video w-full rounded-2xl overflow-hidden bg-slate-100 relative">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3470.7637217085844!2d104.05802468777274!3d1.1245903737664467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d988e6d3675a01%3A0x49e9d0d995ebd175!2sCitraLand%20Megah!5e1!3m2!1sen!2sid!4v1774784431443!5m2!1sen!2sid" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2063.728570563429!2d104.05843210675899!3d1.1244285816043933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d988e6d3675a01%3A0x49e9d0d995ebd175!2sCitraLand%20Megah!5e1!3m2!1sen!2sid!4v1774855404625!5m2!1sen!2sid" 
+                title="Peta lokasi acara"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, position: 'absolute', top: 0, left: 0 }} 
