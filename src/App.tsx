@@ -17,7 +17,7 @@ import citralandMegahLogo from './assets/citraland-megah-warna.png';
 import jerseyImage from './assets/jersey.jpg';
 import logoFunRun from './assets/logo-fun-run-5k.png';
 import medalImage from './assets/medals-and-lanyard.jpg';
-import phoenixEventBatamLogo from './assets/phoenix-event-batam-logo.png';
+import phoenixEventBatamLogo from './assets/peb-brand.png';
 import routeMapImage from './assets/peta-rute.png';
 import bagImage from './assets/tas-running.jpg';
 
@@ -196,15 +196,16 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-8 pb-32 overflow-hidden bg-blue-900">
+      <section className="relative pt-8 pb-32 overflow-hidden bg-slate-50">
         <div className="absolute inset-0 overflow-hidden">
           <img 
             src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=2070&auto=format&fit=crop" 
             alt="Runners" 
-            className="object-cover w-full h-full opacity-20"
+            className="object-cover w-full h-full opacity-60"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/80 to-transparent" />
+          <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-50 via-white/30 to-transparent" />
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -213,21 +214,21 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-6">
               <span className="mb-6 flex flex-col items-center gap-3">
                 <span className="inline-flex flex-wrap items-center justify-center">
                   <img
                     src={citralandMegahLogo}
                     alt="Logo CitraLand Megah Batam"
-                    className="h-24 w-auto object-contain sm:h-32 md:h-40 drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]"
+                    className="h-24 w-auto object-contain sm:h-32 md:h-40 drop-shadow-xl"
                   />
                 </span>
               </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500">
                 Fun Run 2026
               </span>
             </h1>
-            <p className="mt-4 text-xl text-blue-100 max-w-2xl mx-auto mb-10">
+            <p className="mt-4 text-xl text-slate-700 max-w-2xl mx-auto mb-10">
               Berlari dan nikmati keseruan tanpa batas! Acara lari santai untuk semua kalangan dengan hadiah puluhan juta rupiah.
             </p>
             
@@ -242,21 +243,21 @@ export default function App() {
               </a>
               <a 
                 href="#info"
-                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all bg-white/10 border border-white/20 rounded-full hover:bg-white/20"
+                className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-700 transition-all bg-slate-900/5 border border-slate-900/10 rounded-full hover:bg-slate-900/10"
               >
                 Pelajari Lebih Lanjut
               </a>
             </div>
 
             <div className="mt-12 flex w-full justify-end">
-              <div className="inline-flex flex-col items-end gap-2 text-white">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-200 sm:text-xs">
+              <div className="inline-flex flex-col items-end gap-2 text-slate-900">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500 sm:text-xs">
                   Organized By
                 </span>
                 <img
                   src={phoenixEventBatamLogo}
                   alt="Logo Phoenix Event Batam"
-                  className="h-8 w-auto object-contain sm:h-10 md:h-12 drop-shadow-[0_0_12px_rgba(255,255,255,0.5)]"
+                  className="h-8 w-auto object-contain sm:h-10 md:h-12 drop-shadow-[0_0_8px_rgba(0,0,0,0.8)]"
                 />
               </div>
             </div>
