@@ -225,7 +225,7 @@ export default function App() {
                 </span>
               </span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-yellow-500">
-                Fun Run 2026
+                Treasure Hunt Fun Run 5K
               </span>
             </h1>
             <p className="mt-4 text-xl text-slate-700 max-w-2xl mx-auto mb-10">

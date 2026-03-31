@@ -4,18 +4,24 @@ import {describe, expect, it} from 'vitest';
 import App from './App';
 
 describe('App branding and race-pack modal', () => {
-  it('renders the updated Ciputra Batam Fun Run 2026 branding and both footer logos', () => {
+  it('renders the updated Ciputra Batam Fun Run 2026 branding, hero title, and both footer logos', () => {
     render(<App />);
 
     const nav = screen.getByRole('navigation');
     const navCta = within(nav).getByRole('link', {name: 'Daftar Sekarang'});
     const medalImage = screen.getByAltText('Medali dan lanyard Ciputra Batam Fun Run 2026');
     const locationMap = screen.getByTitle('Peta lokasi acara');
+    const heroSection = screen
+      .getByText('Berlari dan nikmati keseruan tanpa batas! Acara lari santai untuk semua kalangan dengan hadiah puluhan juta rupiah.')
+      .closest('section');
 
+    expect(heroSection).not.toBeNull();
     expect(screen.getByText('Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getAllByAltText('Logo Ciputra Batam Fun Run 2026')).toHaveLength(2);
     expect(screen.getByAltText('Logo CitraLand Megah')).toBeInTheDocument();
     expect(screen.getByAltText('Jersey eksklusif Ciputra Batam Fun Run 2026')).toBeInTheDocument();
+    expect(within(heroSection!).getByText('Treasure Hunt Fun Run 5K')).toBeInTheDocument();
+    expect(within(heroSection!).queryByText('Fun Run 2026')).not.toBeInTheDocument();
     expect(medalImage).toBeInTheDocument();
     expect(screen.getByAltText('Nomor dada BIB Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getByAltText('Tas running Ciputra Batam Fun Run 2026')).toBeInTheDocument();
