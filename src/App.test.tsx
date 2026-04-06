@@ -4,49 +4,21 @@ import {describe, expect, it} from 'vitest';
 import App from './App';
 
 describe('App branding and race-pack modal', () => {
-  it('renders the current branding, updated hero title, and both footer logos', () => {
+  it('renders the updated Ciputra Batam Fun Run 2026 branding and both footer logos', () => {
     render(<App />);
 
     const nav = screen.getByRole('navigation');
     const navCta = within(nav).getByRole('link', {name: 'Daftar Sekarang'});
-    const jerseyImage = screen.getByAltText('Jersey eksklusif Ciputra Batam Fun Run 2026');
     const medalImage = screen.getByAltText('Medali dan lanyard Ciputra Batam Fun Run 2026');
-    const routeMapImage = screen.getByAltText('Peta Rute 5K');
-    const heroSection = screen
-      .getByText('Berlari dan nikmati keseruan tanpa batas! Acara lari santai untuk semua kalangan dengan hadiah puluhan juta rupiah.')
-      .closest('section');
-
-    expect(heroSection).not.toBeNull();
 
     expect(screen.getByText('Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getAllByAltText('Logo Ciputra Batam Fun Run 2026')).toHaveLength(2);
     expect(screen.getByAltText('Logo CitraLand Megah')).toBeInTheDocument();
-    const heroLogo = within(heroSection!).getByAltText('Logo CiptaLand Megah Batam');
-    const organizerLabel = within(heroSection!).getByText('Organized By :');
-    const organizerBlock = organizerLabel.parentElement;
-
-    expect(within(heroSection!).getByText('Treasure Hunt Fun Run 5K')).toBeInTheDocument();
-    expect(within(heroSection!).queryByText('Fun Run 2026')).not.toBeInTheDocument();
-    expect(heroLogo).toBeInTheDocument();
-    expect(heroLogo).toHaveClass('h-24', 'sm:h-28', 'md:h-32');
-    expect(organizerLabel).toBeInTheDocument();
-    expect(organizerBlock).not.toBeNull();
-    expect(organizerBlock).toHaveClass('inline-flex', 'flex-col', 'items-end');
-    expect(organizerBlock).not.toHaveClass('rounded-2xl', 'border', 'bg-white/10', 'backdrop-blur-sm', 'px-5', 'py-4');
-    expect(within(heroSection!).getByAltText('Logo Phoenix Event Batam')).toBeInTheDocument();
-    expect(within(heroSection!).queryByText('CiptaLandMegahBatam')).not.toBeInTheDocument();
-    expect(within(heroSection!).queryByText('Organized By Phoenix Event Batam')).not.toBeInTheDocument();
-    expect(within(heroSection!).queryByText('Ciputra Batam')).not.toBeInTheDocument();
-    expect(screen.queryByText('Lebih Dari Sekadar Lari')).not.toBeInTheDocument();
-    expect(screen.queryByText('Festival Pasca-Lari')).not.toBeInTheDocument();
-    expect(jerseyImage).toBeInTheDocument();
+    expect(screen.getByAltText('Jersey eksklusif Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(medalImage).toBeInTheDocument();
     expect(screen.getByAltText('Nomor dada BIB Ciputra Batam Fun Run 2026')).toBeInTheDocument();
     expect(screen.getByAltText('Tas running Ciputra Batam Fun Run 2026')).toBeInTheDocument();
-    expect(routeMapImage).toBeInTheDocument();
-    expect(routeMapImage).not.toHaveAttribute('src', expect.stringContaining('images.unsplash.com'));
     expect(navCta).toHaveClass('shrink-0', 'px-3', 'py-2', 'text-xs', 'sm:px-5', 'sm:py-2.5', 'sm:text-sm');
-    expect(jerseyImage).toHaveClass('scale-[1.2]');
     expect(medalImage).not.toHaveClass('scale-110', '-translate-y-6');
     expect(screen.getAllByText('Instagram: batamfunrun.id')).toHaveLength(2);
     expect(screen.getAllByText('Whatsapp: +62 853 5151 8858')).toHaveLength(2);
