@@ -9,9 +9,6 @@ import {
   Shirt, 
   Ticket,
   ChevronRight,
-  Camera,
-  Music,
-  Smile,
   X
 } from 'lucide-react';
 import { motion } from 'motion/react';
@@ -20,6 +17,7 @@ import citralandMegahLogo from './assets/citraland-megah-warna.png';
 import jerseyImage from './assets/jersey.jpg';
 import logoFunRun from './assets/logo-fun-run-5k.png';
 import medalImage from './assets/medals-and-lanyard.jpg';
+import phoenixEventBatamLogo from './assets/phoenix-event-batam-logo.png';
 import routeMapImage from './assets/peta-rute.png';
 import bagImage from './assets/tas-running.jpg';
 
@@ -36,6 +34,7 @@ type RacePackImage = {
   src: string;
   alt: string;
   label: string;
+  imageClassName?: string;
 };
 
 const racePackImages: RacePackImage[] = [
@@ -43,6 +42,7 @@ const racePackImages: RacePackImage[] = [
     src: jerseyImage,
     alt: `Jersey eksklusif ${EVENT_NAME}`,
     label: 'Jersey Eksklusif',
+    imageClassName: 'scale-[1.2]',
   },
   {
     src: medalImage,
@@ -213,13 +213,18 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-blue-800/50 border border-blue-400/30 text-blue-200 text-sm font-semibold tracking-wider uppercase mb-6">
-              Ciputra Batam
-            </span>
             <h1 className="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
-              Ciputra Batam <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
-                Fun Run 2026
+              <span className="mb-4 flex flex-col items-center gap-3">
+                <span className="inline-flex flex-wrap items-center justify-center">
+                  <img
+                    src={citralandMegahLogo}
+                    alt="Logo CiptaLand Megah Batam"
+                    className="h-24 w-auto object-contain sm:h-28 md:h-32"
+                  />
+                </span>
+              </span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
+                Treasure Hunt Fun Run 5K
               </span>
             </h1>
             <p className="mt-4 text-xl text-blue-100 max-w-2xl mx-auto mb-10">
@@ -241,6 +246,19 @@ export default function App() {
               >
                 Pelajari Lebih Lanjut
               </a>
+            </div>
+
+            <div className="mt-10 flex w-full justify-end">
+              <div className="inline-flex flex-col items-end gap-3 text-right text-white">
+                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-100 sm:text-sm">
+                  Organized By :
+                </span>
+                <img
+                  src={phoenixEventBatamLogo}
+                  alt="Logo Phoenix Event Batam"
+                  className="h-8 w-auto object-contain sm:h-10 md:h-12"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -284,48 +302,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Lebih Dari Sekadar Lari</h2>
-            <p className="text-lg text-slate-600">
-              Bergabunglah dengan 500+ peserta lainnya dalam acara lari paling seru tahun ini. Dirancang untuk semua level, dari pelari profesional hingga keluarga yang ingin berjalan santai.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <Camera className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Rute Instagramable</h3>
-              <p className="text-slate-600">
-                Setiap kilometer menghadirkan spot foto menarik yang mendorong Anda untuk mengabadikan momen seru bersama teman dan keluarga.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
-                <Smile className="w-7 h-7 text-orange-500" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Untuk Semua Level</h3>
-              <p className="text-slate-600">
-                Tanpa batasan! Berbeda dari lomba kompetitif, fun run ini mengajak pejalan kaki, jogger, maupun pelari untuk berpartisipasi bersama.
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-              <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <Music className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Festival Pasca-Lari</h3>
-              <p className="text-slate-600">
-                Nikmati hiburan DJ Live, beragam stan makanan, dan puncaknya: pengundian doorprize dengan hadiah menarik yang siap dibawa pulang!
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Race Pack & Pricing */}
       <section className="py-24 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -350,7 +326,7 @@ export default function App() {
                       <img
                         src={item.src}
                         alt={item.alt}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.imageClassName ?? ''}`}
                       />
                     </button>
                     <div className="p-3 text-center text-sm font-bold text-slate-800 border-t border-slate-100">{item.label}</div>
@@ -362,8 +338,8 @@ export default function App() {
                 {[
                   { icon: Shirt, text: `Jersey Eksklusif ${EVENT_NAME}` },
                   { icon: Medal, text: "Medali Finisher (untuk semua yang menyelesaikan rute)" },
-                  { icon: Ticket, text: "Nomor Dada (Race Bib) dengan Chip Pencatat Waktu" },
-                  { icon: Gift, text: "Goodie Bag & Lanyard" }
+                  { icon: Ticket, text: "Nomor Dada (Race Bib)" },
+                  { icon: Gift, text: "Goodie Bag" }
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
                     <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center shrink-0">
