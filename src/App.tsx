@@ -17,7 +17,7 @@ import citralandMegahLogo from './assets/citraland-megah-warna.png';
 import jerseyImage from './assets/jersey.jpg';
 import logoFunRun from './assets/logo-fun-run-5k.png';
 import medalImage from './assets/medals-and-lanyard.jpg';
-import phoenixEventBatamLogo from './assets/peb-brand.png';
+import phoenixEventBatamLogo from './assets/phoenix-event-batam-logo.png';
 import routeMapImage from './assets/peta-rute.png';
 import bagImage from './assets/tas-running.jpg';
 
